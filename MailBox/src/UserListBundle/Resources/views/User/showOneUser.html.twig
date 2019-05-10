@@ -5,11 +5,20 @@
     <ul>
         <li><b>Imię: </b>{{user.getName}}</li>
         <li><b>Nazwisko: </b>{{user.getSurname}}</li>
-        <li><b>Opis: </b>{{user.getDescription}}</li>
-        <li><b>Miasto: </b>{{address.getCity}}</li>
-        <li><b>Ulica: </b>{{address.getStreet}}</li>
-        <li><b>Nr domu: </b>{{address.getHomeNumber}}</li>
-        <li><b>Nr mieszkania: </b>{{address.getApartmentNumber}}</li>
+        <li><b>Opis: </b>{{user.getDescription}}</li><hr>
+
+        <h4>Hacjendy użytkownika {{ user.getName }};)</h4>
+        {% for i in count..count %}
+            {% for adres in address %}
+                <li><b>Miasto: </b>{{adres.getCity}}</li>
+                <li><b>Ulica: </b>{{adres.getStreet}}</li>
+                <li><b>Nr domu: </b>{{adres.getHomeNumber}}</li>
+                <li><b>Nr mieszkania: </b>{{adres.getApartmentNumber}}</li>
+                <a href="{{ path('modifyaddress', {'id': adres.getId}) }}">Modyfikuj adres</a> <br><br>
+            {% endfor %}
+
+        {% endfor %}
+
     </ul>
 
     <a href="{{ path('modifyuser', {'id': user.getId}) }}">Edytuj użytkownika!</a><hr>

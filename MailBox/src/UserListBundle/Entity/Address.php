@@ -24,21 +24,21 @@ class Address
     /**
      * @var string
      *
-     * @ORM\Column(name="city", type="string", length=50)
+     * @ORM\Column(name="city", type="string", length=50, nullable=true)
      */
     private $city;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="street", type="string", length=100)
+     * @ORM\Column(name="street", type="string", length=100, nullable=true)
      */
     private $street;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="home_number", type="string")
+     * @ORM\Column(name="home_number", type="string", nullable=true)
      */
     private $homeNumber;
 
@@ -54,6 +54,11 @@ class Address
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     private $user;
+//
+//    public function __toString()
+//    {
+//        return $this->user;
+//    }
 
 
     /**

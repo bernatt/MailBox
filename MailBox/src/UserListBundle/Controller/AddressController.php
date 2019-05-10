@@ -44,4 +44,34 @@ class AddressController extends Controller
             return $this->redirect($url);
         }
     }
+
+    /**
+     * @Route("/{id}/modifyAddress" , name="modifyaddress")
+     * @Template("@UserList/Address/newAddressForm.html.twig")
+     */
+
+    public function modifyAddressAction(Request $request, $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $repository = $em->getRepository('UserListBundle:Address');
+        $address = $repository->find($id);
+
+        if (!$address) {
+            return new Response('Adres o podanym ID nie istnieje');
+        }
+
+        $form = $this->createForm(AddressType::class, $address);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $address = $form->getData();
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($address);
+            $em->flush();
+
+            $url = $this->generateUrl('showallusers');
+            return $this->redirect($url);
+        }
+        return['form' => $form->createView()];
+    }
 }

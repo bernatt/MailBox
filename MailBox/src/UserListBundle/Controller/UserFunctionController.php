@@ -11,6 +11,7 @@ use UserListBundle\Form\UserType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
+
 class UserFunctionController extends Controller
 {
     /**
@@ -109,11 +110,12 @@ class UserFunctionController extends Controller
         $user = $repository->find($id);
 
         $repository2 = $em->getRepository('UserListBundle:Address');
-        $address = $repository2->find($id);
-
+        $address = $repository2->findByUser($id); //findByUser user z Encji adresu ( wczytuje wszystkie pozycje dla usera o danym id)
+        $addressesCount = count($address);
         return[
             'user' => $user,
-            'address' => $address
+            'address' => $address,
+            'count' => $addressesCount
         ];
     }
 

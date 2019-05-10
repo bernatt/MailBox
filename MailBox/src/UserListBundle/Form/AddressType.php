@@ -3,7 +3,6 @@
 namespace UserListBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -20,8 +19,8 @@ class AddressType extends AbstractType
             ->setMethod('POST')
             ->add('city',TextType::class, ['label' => 'Miasto'])
             ->add('street',TextType::class, ['label' => 'Ulica'])
-            ->add('homeNumber',NumberType::class, ['label' => 'Numer domu'])
-            ->add('apartmentNumber',NumberType::class, ['label' => 'Numer mieszkania'])
+            ->add('homeNumber',TextType::class, ['label' => 'Numer domu'])
+            ->add('apartmentNumber',TextType::class, ['label' => 'Numer mieszkania'])
             ->add('user' )
             ->add('save', SubmitType::class, ['label' => 'Dodaj adres']);
     }/**
