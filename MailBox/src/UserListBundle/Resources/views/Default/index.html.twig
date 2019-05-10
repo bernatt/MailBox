@@ -1,0 +1,12 @@
+{% block head %}
+    <h2>Kontrola użytkownika.</h2>
+{% endblock %}
+
+{% block body %}
+{% endblock %}
+
+{% block foot %}
+    <h3>Lista dostępnych akcji:</h3>
+    <a href="{{ path('newuser') }}">Dodaj nowego użytkownika.</a><br>
+    <a href="{{ path('showallusers') }}">Lista użytkowników, edycja, usuwanie.</a>
+{% endblock %}

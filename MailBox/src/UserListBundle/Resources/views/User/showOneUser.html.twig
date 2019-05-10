@@ -1,0 +1,16 @@
+{% extends '@UserList/Default/index.html.twig' %}
+
+{% block body %}
+    <h2>Twój użytkownik:</h2>
+    <ul>
+        <li><b>Imię: </b>{{user.getName}}</li>
+        <li><b>Nazwisko: </b>{{user.getSurname}}</li>
+        <li><b>Opis: </b>{{user.getDescription}}</li>
+        <li><b>Miasto: </b>{{address.getCity}}</li>
+        <li><b>Ulica: </b>{{address.getStreet}}</li>
+        <li><b>Nr domu: </b>{{address.getHomeNumber}}</li>
+        <li><b>Nr mieszkania: </b>{{address.getApartmentNumber}}</li>
+    </ul>
+
+    <a href="{{ path('modifyuser', {'id': user.getId}) }}">Edytuj użytkownika!</a><hr>
+{% endblock %}
