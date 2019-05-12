@@ -1,6 +1,7 @@
 {% extends '@UserList/Default/index.html.twig' %}
 
 {% block body %}
+    Kliknij w imię aby wyświetlić szczegółowe informacje.
     <table border="1px solid black">
         <tr>
             <th>ID</th>
@@ -12,16 +13,15 @@
         {% for user in users %}
             <tr>
                 <td>{{ user.getId }}</td>
-                <td>{{ user.getName }}</td>
+                <td><a href="{{ path('showone', {'id': user.getId}) }}">{{ user.getName }}</a></td>
                 <td>{{ user.getSurname }}</td>
                 <td>{{ user.getDescription }}</td>
                 <td>
                     <a href="{{ path('modifyuser', {'id': user.getId}) }}">Edytuj</a>
                     <a href="{{ path('deleteuser', {'id': user.getId}) }}">Usuń</a>
-                    <a href="{{ path('showone', {'id': user.getId}) }}">Poka go!</a>
                 </td>
             </tr>
         {% endfor %}
     </table>
-    <a href="{{ path('newaddress') }}">Uzupełnij adres!</a>
+
 {% endblock %}

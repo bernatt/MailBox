@@ -21,7 +21,7 @@ class AddressController extends Controller
      * @Template("@UserList/Address/newAddressForm.html.twig")
      */
 
-    public function newAddressAction(Request $request)
+    public function newAddressAction(SessionInterface $session, Request $request)
     {
         if ($request->isMethod('GET')) {
             $address = new Address();
@@ -41,8 +41,11 @@ class AddressController extends Controller
             $em->persist($createAddress);
             $em->flush();
 
-            $url = $this->generateUrl('showallusers');
-            return $this->redirect($url);
+//            $url = $this->generateUrl('showallusers');
+//            return $this->redirect($url);
+            $redirectToShowOne = $session->get('showOneUser_id');
+            $session->clear('showOneUser_id');
+            return $this->redirect('/'.$redirectToShowOne);
         }
     }
 
@@ -70,11 +73,32 @@ class AddressController extends Controller
             $em->persist($address);
             $em->flush();
 
-            //$url = $this->generateUrl('showone');
+
             $redirectToShowOne = $session->get('showOneUser_id');
             $session->clear('showOneUser_id');
             return $this->redirect('/'.$redirectToShowOne);
         }
         return['form' => $form->createView()];
+    }
+
+    /**
+     * @Route("/{id}/deleteAdress" , name="deleteaddress")
+     */
+
+    public function deleteAddressAction(SessionInterface $session, $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $repository = $em->getRepository('UserListBundle:Address');
+        $address = $repository->find($id);
+
+        if (!$address) {
+            return new Response('Adres o podanym ID nie istnieje');
+        }
+        $em->remove($address);
+        $em->flush();
+
+        $redirectToShowOne = $session->get('showOneUser_id');
+        $session->clear('showOneUser_id');
+        return $this->redirect('/'.$redirectToShowOne);
     }
 }

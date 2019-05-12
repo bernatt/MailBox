@@ -47,9 +47,21 @@ class User
      * @ORM\OneToMany(targetEntity="Address", mappedBy="user")
      */
     private $address;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Phone", mappedBy="user")
+     */
+    private $phone;
+
     public function __construct()
     {
         $this->address = new ArrayCollection();
+        $this->phone = new ArrayCollection();
+    }
+
+    public function __toString()
+    {
+        return $this->name.$this->surname;
     }
 
 
@@ -157,5 +169,29 @@ class User
     public function getAddress()
     {
         return $this->address;
+    }
+
+    /**
+     * Add address
+     *
+     * @param \UserListBundle\Entity\Address $address
+     *
+     * @return User
+     */
+    public function addAddress(\UserListBundle\Entity\Address $address)
+    {
+        $this->address[] = $address;
+
+        return $this;
+    }
+
+    /**
+     * Remove address
+     *
+     * @param \UserListBundle\Entity\Address $address
+     */
+    public function removeAddress(\UserListBundle\Entity\Address $address)
+    {
+        $this->address->removeElement($address);
     }
 }

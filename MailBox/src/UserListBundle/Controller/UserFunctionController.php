@@ -8,6 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use UserListBundle\Entity\User;
 use UserListBundle\Entity\Address;
+use UserListBundle\Entity\Phone;
 use UserListBundle\Form\UserType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -45,7 +46,6 @@ class UserFunctionController extends Controller
             $url = $this->generateUrl('showallusers');
             return $this->redirect($url);
         }
-
     }
 
 
@@ -73,8 +73,7 @@ class UserFunctionController extends Controller
             $em->persist($user);
             $em->flush();
 
-            $url = $this->generateUrl('showallusers');
-            return $this->redirect($url);
+            return $this->redirect('/'.$id);
         }
         return['form' => $form->createView()];
     }
@@ -114,10 +113,16 @@ class UserFunctionController extends Controller
         $repository2 = $em->getRepository('UserListBundle:Address');
         $address = $repository2->findByUser($id); //findByUser user z Encji adresu ( wczytuje wszystkie pozycje dla usera o danym id)
         $addressesCount = count($address);
+
+        $repository3 = $em->getRepository('UserListBundle:Phone');
+        $phone = $repository3->findByUser($id);
+        $phoneCount = count($phone);
         return[
             'user' => $user,
             'address' => $address,
-            'count' => $addressesCount
+            'count' => $addressesCount,
+            'countPhone' => $phoneCount,
+            'phones' => $phone
         ];
     }
 
