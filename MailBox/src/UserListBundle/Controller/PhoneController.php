@@ -23,8 +23,8 @@ class PhoneController extends Controller
     public function newPhoneAction(SessionInterface $session, Request $request)
     {
         if ($request->isMethod('GET')) {
-            $address = new Phone();
-            $form = $this->createForm(PhoneType::class, $address, [
+            $phone = new Phone();
+            $form = $this->createForm(PhoneType::class, $phone, [
                 'action' => $this->generateUrl('createphone')
             ]);
             return ['form' => $form->createView()];
