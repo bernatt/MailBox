@@ -15,6 +15,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 class AddressController extends Controller
 {
+
     /**
      * @Route("/newAddress" , name="newaddress" , methods="GET")
      * @Route("/newAddress" , name="createaddress" , methods="POST")

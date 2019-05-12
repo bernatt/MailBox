@@ -1,14 +1,15 @@
 {% extends '@UserList/Default/index.html.twig' %}
 
 {% block body %}
-    <h2>Twój użytkownik:</h2>
+    <h2>Kontakt {{user.getName}} </h2>
     <ul>
         <li><b>Imię: </b>{{user.getName}}</li>
         <li><b>Nazwisko: </b>{{user.getSurname}}</li>
         <li><b>Opis: </b>{{user.getDescription}}</li><br>
         <a href="{{ path('modifyuser', {'id': user.getId}) }}">Edytuj dane osobowe</a><hr>
 
-        <h4>Hacjendy użytkownika {{ user.getName }};)</h4>
+        <h3>Hacjendy:</h3>
+
         {% for i in countAddress..countAddress %}
             {% for adres in address %}
                 <li><b>Miasto: </b>{{adres.getCity}}</li>
@@ -22,7 +23,8 @@
 
         <a href="{{ path('newaddress') }}">Dodaj nowy adres dla {{user.getName}} </a><hr>
 
-        <h4>Numery telefonu użytkownika {{ user.getName }};)</h4>
+        <h3>Numery telefonu:</h3>
+
         {% for i in countPhone..countPhone %}
             {% for phone in phones %}
                 <li><b>Numer telefonu: </b>{{phone.getPhoneNumber}}</li>
@@ -35,7 +37,8 @@
 
         <a href="{{ path('newphone') }}">Dodaj nowy numer telefonu dla {{user.getName}} </a><hr>
 
-        <h4>Emaile użytkownika {{ user.getName }};)</h4>
+        <h3>Emaile:</h3>
+
         {% for i in countEmail..countEmail %}
             {% for email in emails %}
                 <li><b>Email: </b>{{email.getEmailAddress}}</li>

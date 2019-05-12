@@ -21,7 +21,7 @@ class AddressType extends AbstractType
             ->add('street',TextType::class, ['label' => 'Ulica'])
             ->add('homeNumber',TextType::class, ['label' => 'Numer domu'])
             ->add('apartmentNumber',TextType::class, ['label' => 'Numer mieszkania'])
-            ->add('user' )
+            ->add('user')
             ->add('save', SubmitType::class, ['label' => 'Dodaj adres']);
     }/**
      * {@inheritdoc}
