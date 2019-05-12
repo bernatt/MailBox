@@ -53,10 +53,16 @@ class User
      */
     private $phone;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Email", mappedBy="user")
+     */
+    private $email;
+
     public function __construct()
     {
         $this->address = new ArrayCollection();
         $this->phone = new ArrayCollection();
+        $this->email = new ArrayCollection();
     }
 
     public function __toString()
@@ -227,5 +233,39 @@ class User
     public function getPhone()
     {
         return $this->phone;
+    }
+
+    /**
+     * Add email
+     *
+     * @param \UserListBundle\Entity\Email $email
+     *
+     * @return User
+     */
+    public function addEmail(\UserListBundle\Entity\Email $email)
+    {
+        $this->email[] = $email;
+
+        return $this;
+    }
+
+    /**
+     * Remove email
+     *
+     * @param \UserListBundle\Entity\Email $email
+     */
+    public function removeEmail(\UserListBundle\Entity\Email $email)
+    {
+        $this->email->removeElement($email);
+    }
+
+    /**
+     * Get email
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getEmail()
+    {
+        return $this->email;
     }
 }

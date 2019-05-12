@@ -106,23 +106,30 @@ class UserFunctionController extends Controller
     public function showOneUserAction(SessionInterface $session, $id)
     {
         $em = $this->getDoctrine()->getManager();
-        $repository = $em->getRepository('UserListBundle:User');
-        $user = $repository->find($id);
-        $session->set('showOneUser_id', $id);       //Tworzę wartość sesji aby w edycji adresu móc wrócić do konkretnego użytkownika
+        $userRepository = $em->getRepository('UserListBundle:User');
+        $user = $userRepository->find($id);
+        $session->set('showOneUser_id', $id);       //Tworzę wartość sesji aby w edycji adresu,phone móc wrócić do konkretnego użytkownika
 
-        $repository2 = $em->getRepository('UserListBundle:Address');
-        $address = $repository2->findByUser($id); //findByUser user z Encji adresu ( wczytuje wszystkie pozycje dla usera o danym id)
+        $addressRepository = $em->getRepository('UserListBundle:Address');
+        $address = $addressRepository->findByUser($id); //findByUser user z Encji adresu ( wczytuje wszystkie pozycje dla usera o danym id)
         $addressesCount = count($address);
 
-        $repository3 = $em->getRepository('UserListBundle:Phone');
-        $phone = $repository3->findByUser($id);
+        $phoneRepository = $em->getRepository('UserListBundle:Phone');
+        $phone = $phoneRepository->findByUser($id);
         $phoneCount = count($phone);
+
+        $emailRepository = $em->getRepository('UserListBundle:Email');
+        $emails = $emailRepository->findByUser($id);
+        $emailCount = count($phone);
+
         return[
             'user' => $user,
             'address' => $address,
-            'count' => $addressesCount,
+            'countAddress' => $addressesCount,
             'countPhone' => $phoneCount,
-            'phones' => $phone
+            'phones' => $phone,
+            'emails' => $emails,
+            'countEmail' => $emailCount
         ];
     }
 

@@ -9,7 +9,7 @@
         <a href="{{ path('modifyuser', {'id': user.getId}) }}">Edytuj dane osobowe</a><hr>
 
         <h4>Hacjendy użytkownika {{ user.getName }};)</h4>
-        {% for i in count..count %}
+        {% for i in countAddress..countAddress %}
             {% for adres in address %}
                 <li><b>Miasto: </b>{{adres.getCity}}</li>
                 <li><b>Ulica: </b>{{adres.getStreet}}</li>
@@ -33,7 +33,20 @@
             {% endfor %}
         {% endfor %}
 
-        <a href="{{ path('newphone') }}">Dodaj nowy numer telefonu dla {{user.getName}} </a>
+        <a href="{{ path('newphone') }}">Dodaj nowy numer telefonu dla {{user.getName}} </a><hr>
+
+        <h4>Emaile użytkownika {{ user.getName }};)</h4>
+        {% for i in countEmail..countEmail %}
+            {% for email in emails %}
+                <li><b>Email: </b>{{email.getEmailAddress}}</li>
+                <li><b>Typ: </b>{{email.getType}}</li>
+                <a href="{{ path('modifyemail', {'id': email.getId}) }}">Modyfikuj email</a> |
+                <a href="{{ path('deleteemail', {'id': email.getId}) }}">Usuń email</a>
+                <br><br>
+            {% endfor %}
+        {% endfor %}
+
+        <a href="{{ path('newemail') }}">Dodaj email dla {{user.getName}} </a>
     </ul>
     <hr>
 
