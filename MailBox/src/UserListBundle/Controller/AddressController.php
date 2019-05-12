@@ -4,6 +4,7 @@ namespace UserListBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use UserListBundle\Entity\Address;
 use UserListBundle\Entity\User;
 use Symfony\Component\HttpFoundation\Response;
@@ -50,7 +51,7 @@ class AddressController extends Controller
      * @Template("@UserList/Address/newAddressForm.html.twig")
      */
 
-    public function modifyAddressAction(Request $request, $id)
+    public function modifyAddressAction(SessionInterface $session, Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
         $repository = $em->getRepository('UserListBundle:Address');
@@ -69,8 +70,10 @@ class AddressController extends Controller
             $em->persist($address);
             $em->flush();
 
-            $url = $this->generateUrl('showallusers');
-            return $this->redirect($url);
+            //$url = $this->generateUrl('showone');
+            $redirectToShowOne = $session->get('showOneUser_id');
+            $session->clear('showOneUser_id');
+            return $this->redirect('/'.$redirectToShowOne);
         }
         return['form' => $form->createView()];
     }

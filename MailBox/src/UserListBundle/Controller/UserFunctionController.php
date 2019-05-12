@@ -5,6 +5,7 @@ namespace UserListBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use UserListBundle\Entity\User;
 use UserListBundle\Entity\Address;
 use UserListBundle\Form\UserType;
@@ -82,7 +83,7 @@ class UserFunctionController extends Controller
      * @Route("/{id}/delete", name="deleteuser")
      */
 
-    public function deleteBookAction($id)
+    public function deleteUserAction($id)
     {
         $em = $this->getDoctrine()->getManager();
         $repository = $em->getRepository('UserListBundle:User');
@@ -103,11 +104,12 @@ class UserFunctionController extends Controller
      * @Template("@UserList/User/showOneUser.html.twig")
      */
 
-    public function showOneUserAction($id)
+    public function showOneUserAction(SessionInterface $session, $id)
     {
         $em = $this->getDoctrine()->getManager();
         $repository = $em->getRepository('UserListBundle:User');
         $user = $repository->find($id);
+        $session->set('showOneUser_id', $id);       //Tworzę wartość sesji aby w edycji adresu móc wrócić do konkretnego użytkownika
 
         $repository2 = $em->getRepository('UserListBundle:Address');
         $address = $repository2->findByUser($id); //findByUser user z Encji adresu ( wczytuje wszystkie pozycje dla usera o danym id)
