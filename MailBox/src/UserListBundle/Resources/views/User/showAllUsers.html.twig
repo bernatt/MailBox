@@ -3,7 +3,7 @@
 {% block body %}
     <div id="content">
     Kliknij w imię aby wyświetlić szczegółowe informacje.
-    <table border="1px solid black" align="center">
+    <table border="1px solid black" align="center" cellpadding="8px">
         <tr>
             <th>ID</th>
             <th>Imie</th>
@@ -14,12 +14,12 @@
         {% for user in users %}
             <tr>
                 <td>{{ user.getId }}</td>
-                <td><a href="{{ path('showone', {'id': user.getId}) }}">{{ user.getName }}</a></td>
+                <td><a href="{{ path('showone', {'id': user.getId}) }}" class="linkstyle">{{ user.getName }}</a></td>
                 <td>{{ user.getSurname }}</td>
                 <td>{{ user.getDescription }}</td>
                 <td>
-                    <a href="{{ path('modifyuser', {'id': user.getId}) }}">Edytuj</a>
-                    <a href="{{ path('deleteuser', {'id': user.getId}) }}">Usuń</a>
+                    <a href="{{ path('modifyuser', {'id': user.getId}) }}" class="linkstyle">Edytuj</a>
+                    <a href="{{ path('deleteuser', {'id': user.getId}) }}" class="linkstyle">Usuń</a>
                 </td>
             </tr>
         {% endfor %}

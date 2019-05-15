@@ -39,6 +39,10 @@
     text-align: left;
     background-color: rgba(26, 255, 81, 0.22);
 }
+#emaildiv
+{
+
+}
 #footer
 {
     clear: both;
@@ -46,4 +50,10 @@
     color: white;
     padding: 10px;
     text-align: center;
+}
+
+a.linkstyle
+{
+    color: #100ca1;
+    text-decoration: none;
 }

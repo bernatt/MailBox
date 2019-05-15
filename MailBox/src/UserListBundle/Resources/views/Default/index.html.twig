@@ -6,8 +6,8 @@
         <meta name="description" content="Miej swoich znajomych zawsze pod ręką. Zapisuj wszystkie przydatne informacje" />
         <meta name="keywords" content="" />  {# słowa kluczowe do wyszukiwania #}
         <link href="{{ asset('bundles/userlist/css/index.css') }}" type="text/css" rel="stylesheet"/>
-
     </head>
+
     <div id="container">
 
         {% block head %}
@@ -19,8 +19,8 @@
         {% block navigation %}
             <div id="navigation">
                 <h4>Nawigacja:</h4>
-                <a href="{{ path('newuser') }}">Dodaj nowego użytkownika.</a><br><br>
-                <a href="{{ path('showallusers') }}">Lista użytkowników, edycja, usuwanie.</a>
+                <a href="{{ path('newuser') }}" class="linkstyle">Dodaj nowego użytkownika.</a><br><br>
+                <a href="{{ path('showallusers') }}" class="linkstyle">Lista użytkowników, edycja, usuwanie.</a>
             </div>
         {% endblock %}
 
