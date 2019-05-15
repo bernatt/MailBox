@@ -1,8 +1,9 @@
 {% extends '@UserList/Default/index.html.twig' %}
 
 {% block body %}
+    <div id="content">
     Kliknij w imię aby wyświetlić szczegółowe informacje.
-    <table border="1px solid black">
+    <table border="1px solid black" align="center">
         <tr>
             <th>ID</th>
             <th>Imie</th>
@@ -23,5 +24,5 @@
             </tr>
         {% endfor %}
     </table>
-
+    </div>
 {% endblock %}

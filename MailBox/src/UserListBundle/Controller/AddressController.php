@@ -19,7 +19,7 @@ class AddressController extends Controller
     /**
      * @Route("/newAddress" , name="newaddress" , methods="GET")
      * @Route("/newAddress" , name="createaddress" , methods="POST")
-     * @Template("@UserList/Address/newAddressForm.html.twig")
+     * @Template("@UserList/User/userForm.html.twig")
      */
 
     public function newAddressAction(SessionInterface $session, Request $request)
@@ -52,7 +52,7 @@ class AddressController extends Controller
 
     /**
      * @Route("/{id}/modifyAddress" , name="modifyaddress")
-     * @Template("@UserList/Address/newAddressForm.html.twig")
+     * @Template("@UserList/User/userForm.html.twig")
      */
 
     public function modifyAddressAction(SessionInterface $session, Request $request, $id)

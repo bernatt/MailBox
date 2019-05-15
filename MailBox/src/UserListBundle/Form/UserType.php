@@ -5,6 +5,7 @@ namespace UserListBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -19,7 +20,7 @@ class UserType extends AbstractType
             ->setMethod('POST')
             ->add('name',TextType::class, ['label' => 'Imie'])
             ->add('surname',TextType::class, ['label' => 'Nazwisko'])
-            ->add('description', TextType::class, ['label' => 'Opis'])
+            ->add('description', TextareaType::class, ['label' => 'Opis'])
             ->add('save', SubmitType::class, ['label' => 'Dodaj użytkownika']);
     }
     /**

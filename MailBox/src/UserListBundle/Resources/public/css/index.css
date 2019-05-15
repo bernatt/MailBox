@@ -1,0 +1,49 @@
+#container
+{
+    width: 1900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+#logo
+{
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+#navigation
+{
+    float: left;
+    background-color: #6ad317;
+    text-align: center;
+    width: 200px;
+    min-height: 750px;
+    padding: 15px;
+}
+#content
+{
+    float: left;
+    width: 1630px;
+    min-height: 710px;
+    padding: 20px;
+    padding-top: 50px;
+    text-align: center;
+    background-color: rgba(26, 255, 81, 0.22);
+}
+#listdiv
+{
+    float: left;
+    width: 1630px;
+    min-height: 740px;
+    padding: 20px;
+    text-align: left;
+    background-color: rgba(26, 255, 81, 0.22);
+}
+#footer
+{
+    clear: both;
+    background-color: black;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
