@@ -2,14 +2,14 @@
 
 {% block body %}
     <div id="listdiv">
-    <h2>Kontakt {{user.getName}}: </h2>
+        <p class="personal"> Kontakt {{user.getName}}: </p>
     <ul>
         <li><b>Imię: </b>{{user.getName}}</li>
         <li><b>Nazwisko: </b>{{user.getSurname}}</li>
         <li><b>Opis: </b>{{user.getDescription}}</li><br>
         <a href="{{ path('modifyuser', {'id': user.getId}) }}" class="linkstyle">Edytuj dane osobowe</a><hr>
 
-        <h3>Hacjendy:</h3>
+        <p class="personal">Hacjendy:</p>
 
         {% for i in countAddress..countAddress %}
             {% for adres in address %}
@@ -22,9 +22,9 @@
             {% endfor %}
         {% endfor %}
 
-        <a href="{{ path('newaddress') }}">Dodaj nowy adres dla {{user.getName}} </a><hr>
+        <a href="{{ path('newaddress') }}" class="linkstyle">Dodaj nowy adres dla {{user.getName}} </a><hr>
 
-        <h3>Numery telefonu:</h3>
+        <p class="personal">Numery telefonu:<p>
 
         {% for i in countPhone..countPhone %}
             {% for phone in phones %}
@@ -38,7 +38,7 @@
 
         <a href="{{ path('newphone') }}" class="linkstyle">Dodaj nowy numer telefonu dla {{user.getName}} </a><hr>
 
-        <h3>Emaile:</h3>
+        <p class="personal">Emaile:</p>
 
         {% for i in countEmail..countEmail %}
             {% for email in emails %}
